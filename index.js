@@ -8,19 +8,23 @@ const { mysqlQuery } = require('./script');
 app.get('/', async (req, res) => {
     try {
         const results = await mysqlQuery();
-        const names = results.length ? results[0].name : 'No name found';
+        const nameList = []
+
+        for(const item of results) {
+            nameList.push(item.name)
+        }
 
         res.send(`
             <h1>Full Cycle</h1>
-            <p>The name inserted in db was: ${names}</p>
+            <p>The name inserted in db was: ${nameList.join(", ")}</p>
         `);
     } catch (error) {
+        error
         res.status(500).send('Error fetching data from the database');
     }
 });
 
 app.listen(port, () => {
-        console.log('Rodando na porta ' + port)
+        console.log('Aplicação no ar!!! Rodando na porta ' + port)
     }
 )
-

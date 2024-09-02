@@ -13,7 +13,7 @@ function mysqlQuery() {
     return new Promise((resolve, reject) => {
 
         const sqlCreateTable = `CREATE TABLE IF NOT EXISTS people(name varchar(255))`
-        const sql = `INSERT INTO people(name) values('Marcos')`
+        const sql = `INSERT INTO people(name) values('Marcos'), ('Wesley'), ('Fullcycle')`
         connection.query(sqlCreateTable)
         connection.query(sql)
 
