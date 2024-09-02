@@ -13,7 +13,7 @@ services:
     tty: true
     ports:
       - "3000:3000"
-    command: ["node", "index.js"]
+    command: bash -c "npm install && node index.js"
     depends_on: 
       - db
 
